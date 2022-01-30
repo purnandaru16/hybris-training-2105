@@ -35,6 +35,12 @@
 		</div>
 
 		<div>
+			<ycommerce:testId code="searchPage_productName_link_${product.supplier}">
+				${ycommerce:sanitizeHTML(product.supplier)}</a>
+			</ycommerce:testId>
+		</div>
+
+		<div>
 			<ycommerce:testId code="searchPage_productName_link_${product.material}">
 				${ycommerce:sanitizeHTML(product.material)}</a>
 			</ycommerce:testId>

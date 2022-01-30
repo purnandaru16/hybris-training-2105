@@ -15,5 +15,6 @@ public class TrainingSearchResultProductPopulator extends SearchResultProductPop
     public void populate(final SearchResultValueData source, final ProductData target) throws ConversionException {
         target.setSku(this.<String>getValue(source, "sku"));
         target.setMaterial(this.<String>getValue(source, "material"));
+        target.setSupplier(this.<String>getValue(source, "supplier"));
     }
 }

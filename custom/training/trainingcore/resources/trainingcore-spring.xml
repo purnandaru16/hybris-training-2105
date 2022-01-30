@@ -41,6 +41,10 @@
         <property name="priceService" ref="priceService"/>
     </bean>
 
+	<bean id="supplierValueProvider" class="org.training.core.provider.SupplierValueProvider"  parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+	</bean>
+
 
 	<bean id="electronicsCategorySource" parent="abstractCategorySource">
 		<property name="rootCategory" value="1"/>
