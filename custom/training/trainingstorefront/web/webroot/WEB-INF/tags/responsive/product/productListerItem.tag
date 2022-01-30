@@ -28,6 +28,18 @@
 			<a class="product__list--name" href="${fn:escapeXml(productUrl)}">${ycommerce:sanitizeHTML(product.name)}</a>
 		</ycommerce:testId>
 
+		<div>
+			<ycommerce:testId code="searchPage_productName_link_${product.sku}">
+				${ycommerce:sanitizeHTML(product.sku)}</a>
+			</ycommerce:testId>
+		</div>
+
+		<div>
+			<ycommerce:testId code="searchPage_productName_link_${product.material}">
+				${ycommerce:sanitizeHTML(product.material)}</a>
+			</ycommerce:testId>
+		</div>
+
 		<div class="product__list--price-panel">
 			<c:if test="${not empty product.potentialPromotions}">
 				<div class="product__listing--promo">
