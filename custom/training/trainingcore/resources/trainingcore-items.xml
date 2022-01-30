@@ -25,6 +25,11 @@
             <value code="WHITE"/>
             <value code="YELLOW"/>
         </enumtype>
+        <enumtype generate="true" code="SupplierStatusEnum" autocreate="true" dynamic="true">
+            <value code="VERIFIED"/>
+            <value code="IN_REVIEW"/>
+            <value code="NOT_VERIFIED"/>
+        </enumtype>
     </enumtypes>
 
     <itemtypes>
@@ -140,6 +145,97 @@
                         <description>something</description>
                     </attribute>
                 </attributes>
+            </itemtype>
+
+            <itemtype code="Province" extends="GenericItem" jaloclass="org.training.core.jalo.Province" autocreate="true" generate="true">
+                <deployment table="Provinces" typecode="12001" />
+                <attributes>
+                    <attribute qualifier="code" type="java.lang.String">
+                        <description>Province Code</description>
+                        <modifiers read="true" write="true" search="true" optional="false" unique="true" />
+                        <persistence type="property" />
+                    </attribute>
+                    <attribute qualifier="name" type="localized:java.lang.String">
+                        <description>Province Name</description>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false" />
+                        <persistence type="property" />
+                    </attribute>
+                </attributes>
+                <indexes>
+                    <index name="province_idx" unique="true">
+                        <key attribute="code"/>
+                    </index>
+                </indexes>
+            </itemtype>
+
+            <itemtype code="City" extends="GenericItem" jaloclass="org.training.core.jalo.City" autocreate="true" generate="true">
+                <deployment table="City" typecode="12002" />
+                <attributes>
+                    <attribute qualifier="code" type="java.lang.String">
+                        <description>City Code</description>
+                        <modifiers read="true" write="true" search="true" optional="false" unique="true" />
+                        <persistence type="property" />
+                    </attribute>
+                    <attribute qualifier="name" type="java.lang.String">
+                        <description>City Name</description>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false" />
+                        <persistence type="property" />
+                    </attribute>
+                </attributes>
+                <indexes>
+                    <index name="city_idx" unique="true">
+                        <key attribute="code"/>
+                    </index>
+                </indexes>
+            </itemtype>
+
+            <itemtype code="Address" autocreate="false" generate="false">
+                <attributes>
+                    <attribute qualifier="province" type="Province">
+                        <description>Province</description>
+                        <persistence type="property" />
+                    </attribute>
+                    <attribute qualifier="city" type="City">
+                        <description>City</description>
+                        <persistence type="property" />
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="Supplier" extends="GenericItem" jaloclass="org.training.core.jalo.Supplier" autocreate="true" generate="true">
+                <deployment table="Supplier" typecode="12003" />
+                <attributes>
+                    <attribute qualifier="code" type="java.lang.String">
+                        <description>Supplier Code</description>
+                        <modifiers read="true" write="true" search="true" optional="false" unique="true" />
+                        <persistence type="property" />
+                    </attribute>
+                    <attribute qualifier="name" type="java.lang.String">
+                        <description>City Name</description>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false" />
+                        <persistence type="property" />
+                    </attribute>
+                    <attribute qualifier="province" type="Province">
+                        <description>Province</description>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false" />
+                        <persistence type="property" />
+                    </attribute>
+                    <attribute qualifier="city" type="City">
+                        <description>City</description>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false" />
+                        <persistence type="property" />
+                    </attribute>
+                    <attribute qualifier="status" type="SupplierStatusEnum">
+                        <description>Status</description>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false" />
+                        <persistence type="property" />
+                    </attribute>
+                </attributes>
+                <indexes>
+                    <index name="supplier_idx" unique="true">
+                        <key attribute="code"/>
+                    </index>
+                </indexes>
             </itemtype>
         </typegroup>
 
