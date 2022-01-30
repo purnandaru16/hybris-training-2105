@@ -548,4 +548,13 @@
 
 	<bean id="registrationPOSApprovalActionJob" class="org.training.core.workflow.actions.POSApprovalActionJob"> </bean>
 	<bean id="registrationPOSRejectionActionJob" class="org.training.core.workflow.actions.POSRejectionActionJob"> </bean>
+
+	<alias alias="supplierDao" name="defaultSupplierDao"/>
+	<bean id="defaultSupplierDao" class="org.training.core.dao.impl.SupplierDaoImpl" parent="abstractItemDao" >
+	</bean>
+
+	<bean id="supplierStatusUpdateJobPerformable"
+		  class="org.training.core.job.SupplierStatusUpdateJobPerformable"
+		  parent="abstractJobPerformable">
+	</bean>
 </beans>
